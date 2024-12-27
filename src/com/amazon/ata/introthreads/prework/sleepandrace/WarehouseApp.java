@@ -22,8 +22,11 @@ public class WarehouseApp {
         //Truck arrives, delivering packages.
         warehouseManager.receivePackages(DeliveryTruck.deliverPackages());
 
+
         //Sort out packages into new lists.
         warehouseManager.sortHighPriority();
+        sleepThread(1000);
+
         warehouseManager.sortBooks();
 
         //Printout the list of warehouseManager packages and returns them.
@@ -34,7 +37,12 @@ public class WarehouseApp {
      * Makes a thread sleep.
      * @param milliseconds How many milliseconds to sleep.
      */
-    public static void sleepThread(int milliseconds) {
+    public static void sleepThread(int milliseconds)  {
+        try {
+            Thread.sleep(milliseconds);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
 
     }
 
